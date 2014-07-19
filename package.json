@@ -1,7 +1,7 @@
 {
   "name": "backbone-enhanced",
   "version": "0.0.1",
-  "description": "Collection of enhancements to default backbone. Getter/Setter autogeneration and collection subsets.",
+  "description": "Collection of enhancements to default backbone. Auto-generate accessor methods for model attributes.",
   "main": "lib/main.js",
   "scripts": {
     "test": "mocha test/*.js"
@@ -9,6 +9,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/mwurzberger/backbone-enhanced.git"
+  },
+  "dependencies": {
+    "lodash": "2.4.1",
+    "backbone": "1.1.2"
   },
   "devDependencies": {
     "mocha": "",

@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+
+  		<title>Backbone Enhanced Sandbox</title>		
+	</head>
+	<body>
+		<h1>Backbone Enhanced Sandbox</h1>
+		
+		<!-- <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.underscore.js"></script> -->		
+		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.underscore.js"></script>
+		<!-- <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore.js"></script> -->		
+		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.js"></script>
+		<script type="text/javascript" src="lib/main.js"></script>
+		<script type="text/javascript">
+			var GunModel = Backbone.Model.extend({
+				defaults: {
+					"max-clip-size": 0, 
+				 	"name": "Gun Name", 
+				 	"empty": true 
+				},
+
+				toString: function(){					
+					return ["This ", this.getName(), " has a maximum of ", this.getMaxClipSize(), " rounds and is currently ", (this.isEmpty() ? "empty." : "not empty.")].join("");
+				}			 	
+			});
+
+			var ppk = new GunModel({
+			 	"max-clip-size": 9,
+			 	"name": "Walther PPK", 
+			 	"empty": false
+			});
+
+			console.log(ppk.toString());
+		</script>
+	</body>
+</html>

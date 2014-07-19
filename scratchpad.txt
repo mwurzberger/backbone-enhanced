@@ -22,7 +22,7 @@ Internally rename the old add method to addViaProxy and have it bind to parent a
 
 
 
-
+https://github.com/numbers1311407/backbone-getset/blob/master/lib/backbone-getset.js
 
 Annotated Source at http://backbonejs.org/docs/backbone.html
 
