@@ -1,0 +1,22 @@
+{
+  "name": "backbone-enhanced",
+  "version": "0.0.1",
+  "description": "Collection of enhancements to default backbone. Getter/Setter autogeneration and collection subsets.",
+  "main": "lib/main.js",
+  "scripts": {
+    "test": "mocha test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mwurzberger/backbone-enhanced.git"
+  },
+  "keywords": [
+    "backbone"
+  ],
+  "author": "Matthew Wurzberger",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mwurzberger/backbone-enhanced/issues"
+  },
+  "homepage": "https://github.com/mwurzberger/backbone-enhanced"
+}

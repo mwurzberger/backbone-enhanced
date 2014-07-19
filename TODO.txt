@@ -1,0 +1,57 @@
+Tests to Perform
+- Model sorting different parent vs child
+- Add/Remove/Update model on parent
+- Add/Remove/Update model on child
+- Reset performed on parent vs on child
+
+Add model to child
+Remove model from child
+Update attribute from child
+Reset collection from child
+Add model from parent
+
+
+Action always go from parent to children
+Actions only go from children to parents if they are the originator
+- Prevent callback loop
+- Ex. Parent Collection adds model, Triggers Add event, Child Collection runs onAdd, This adds a model, Triggers add event, (call parent, parent listening)
+
+
+On Model creation if parent is set (how to do this on add?) re-write add method to directly call parent and have callback with the newly created model(s)
+Internally rename the old add method to addViaProxy and have it bind to parent add event
+
+
+
+
+
+Annotated Source at http://backbonejs.org/docs/backbone.html
+
+Figure out how to replicate annotated source
+http://www.opencalais.com/about/developer
+http://lostechies.com/derickbailey/2011/12/14/annotated-source-code-as-documentation-with-docco/
+http://jashkenas.github.io/docco/
+
+
+
+Rendering Engine
+http://marionettejs.com
+
+Subsets for Marionette
+https://github.com/p3drosola/Backbone.VirtualCollection
+
+
+
+http://jsfiddle.net/Z34r5/
+jQuery 			1.11.0
+backbone.js 	1.1.2
+lodash.js 		2.4.1
+
+CDN Information
+Backbone
+//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js
+//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.map
+//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone.js
+
+LoDash
+//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.underscore.js
+//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.underscore.min.js
