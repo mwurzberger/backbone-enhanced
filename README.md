@@ -1,7 +1,17 @@
-backbone-enhanced
-=================
+# backbone-enhanced
+
 
 Adding additional properties to backbone. Such as auto generating getter/setter methods for attributes and subcollections.
+
+
+[![Build Status](https://travis-ci.org/mwurzberger/backbone-enhanced.svg?branch=master)
+
+
+## Installation
+
+## Usage
+
+
 
 
 Auto-generate accessor methods for model attributes.
