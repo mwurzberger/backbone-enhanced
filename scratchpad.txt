@@ -55,3 +55,40 @@ Backbone
 LoDash
 //cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.underscore.js
 //cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.underscore.min.js
+
+
+
+
+
+Break Apart Your Backbone.js Render Methods
+http://ianstormtaylor.com/break-apart-your-backbonejs-render-methods/
+https://www.google.com/search?q=backbone+view&ie=utf-8&oe=utf-8&aq=t&rls=org.mozilla:en-US:official&client=firefox-a&channel=sb
+
+
+
+Configure Gitfile
+http://www.gitguys.com/topics/the-configuration-file-branch-section/
+
+
+GulpJS
+https://github.com/gulpjs/gulp/
+https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md#getting-started
+
+
+Node.js
+http://cecildt.blogspot.com/2011/07/get-started-with-nodejs-on-windows.html
+https://github.com/semmypurewal/node-dev-bootstrap
+http://blog.semmy.me/post/17222183802/node-js-getting-started-with-vagrant (Vagrant)
+http://howtonode.org/introduction-to-npm
+https://github.com/creationix/nvm/
+https://github.com/isaacs/nave/
+https://gist.github.com/isaacs/579814
+http://howtonode.org/managing-module-dependencies
+http://nodeschool.io/
+
+
+Unix command line utilities installer for Windows. 
+http://wiki.github.com/bmatzelle/gow/
+https://github.com/bmatzelle/gow
+
+http://www.hanselman.com/blog/MakingABetterSomewhatPrettierButDefinitelyMoreFunctionalWindowsCommandLine.aspx

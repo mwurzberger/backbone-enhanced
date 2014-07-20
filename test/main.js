@@ -29,7 +29,7 @@ describe('backbone_enhanced', function(){
 		});
 	});
 
-	describe('creates accessors which', function(){
+	describe('creates accessors that', function(){
 		var TestModel = Backbone.Model.extend({
 			defaults: {
 				"test-attribute": "String Here"
@@ -51,5 +51,9 @@ describe('backbone_enhanced', function(){
 			var result = new TestModel({ "valid-test": false });
 			result.isValidTest().should.equal( false );
 		});
+	});
+
+	describe('allows virtual models that', function(){
+		it('should pass set attributes to the ')
 	});
 });

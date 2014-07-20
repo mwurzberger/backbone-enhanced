@@ -23,8 +23,40 @@
 				},
 
 				toString: function(){					
-					return ["This ", this.getName(), " has a maximum of ", this.getMaxClipSize(), " rounds and is currently ", (this.isEmpty() ? "empty." : "not empty.")].join("");
+					return ["This ", this.getName(), " has a maximum of ", this.getMaxClipSize(), " rounds and is currently ", (this.isEmpty() ? "empty." : "loaded.")].join("");
 				}			 	
+			});
+
+			var GunList = Backbone.Collection.extend({
+				model: GunModel,
+				initialize: function() {
+					this._meta = {};
+				},
+				meta: function(prop, value) {
+					if (value === undefined) {
+						return this._meta[prop];
+					} else {
+						this._meta[prop] = value;
+					}
+				},
+				toString: function(){					
+					_.each( this.models, function( model ){
+						console.log(model.toString());
+					});
+				}
+			});
+
+			var GunSafe = Backbone.Model.extend({
+				defaults: {
+					"contains": "Guns"
+				},
+				initialize: function() {
+					this.guns = new GunList;
+				},
+				toString: function(){
+					console.log("Gun safe containing " + this.getContains());
+					this.guns.toString();
+				}
 			});
 
 			var ppk = new GunModel({
@@ -33,7 +65,31 @@
 			 	"empty": false
 			});
 
-			console.log(ppk.toString());
+			var battleRifle = new GunModel({
+			 	"max-clip-size": 15,
+			 	"name": "Halo Battle Rifle", 
+			 	"empty": true
+			});
+
+			var colt1911 = new GunModel({
+			 	"max-clip-size": 15,
+			 	"name": "Colt 1911 .45 ACP", 
+			 	"empty": true
+			});
+
+			var MyGuns = new GunSafe({"contians":"all my guns"});
+			var Pistols = new GunSafe({"contains":"my pistols"});
+
+			MyGuns.guns.add([ ppk, battleRifle, colt1911]);
+			Pistols.guns.add([ ppk, colt1911 ]);
+
+			MyGuns.toString();
+			Pistols.toString();
+
+			ppk.setEmpty( true );
+
+			MyGuns.toString();
+			Pistols.toString();			
 		</script>
 	</body>
 </html>
