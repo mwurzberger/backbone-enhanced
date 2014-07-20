@@ -1,5 +1,5 @@
 // test/main.js
-'use strict';
+"use strict";
 
 var _ = require('lodash/dist/lodash.underscore');
 var Backbone = require('backbone');
@@ -29,31 +29,53 @@ describe('backbone_enhanced', function(){
 		});
 	});
 
-	describe('creates accessors that', function(){
+	describe('generates accessors that', function(){
 		var TestModel = Backbone.Model.extend({
 			defaults: {
 				"test-attribute": "String Here"
 			}
-		})
+		});
 
-		it('should create a getter for an attribute', function(){
+		it('should define a getAttribute function for an attribute', function(){
 			var result = new TestModel({ "test-attribute": 0 });
 			result.getTestAttribute().should.equal( 0 );
 		});
 
-		it('should create setter for an attribute', function(){
+		it('should define a setAttribute function for an attribute', function(){
 			var result = new TestModel({ "test-attribute": 0 });
-			result.setTestAttribute( 1 );
+			result.set("test-attribute", 1 );
 			result.getTestAttribute().should.equal( 1 );
 		});
 
-		it('should create an isAttribute getter for boolean attributes', function(){
+		it('should create a getAttribute function for a boolean attribute', function(){
 			var result = new TestModel({ "valid-test": false });
-			result.isValidTest().should.equal( false );
+			result.getValidTest().should.equal( false );			
+		});
+
+		it('should create a isAttribute function for a boolean attribute', function(){
+			var result = new TestModel({ "valid-test": false });
+			result.isValidTest().should.equal( false );			
+		});
+
+		it('should create a hasAttribute function for a boolean attribute', function(){
+			var result = new TestModel({ "valid-test": false });
+			result.hasValidTest().should.equal( false );			
+		});
+
+		it('should create a canAttribute function for a boolean attribute', function(){
+			var result = new TestModel({ "valid-test": false });
+			result.canValidTest().should.equal( false );			
+		});
+
+		it('should create a shouldAttribute function for a boolean attribute', function(){
+			var result = new TestModel({ "valid-test": false });
+			result.shouldValidTest().should.equal( false );			
 		});
 	});
 
 	describe('allows virtual models that', function(){
-		it('should pass set attributes to the ')
+		it('should pass set attributes to the ', function(){
+
+		});
 	});
 });

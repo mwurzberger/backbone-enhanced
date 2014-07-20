@@ -11,7 +11,7 @@ Adding additional properties to backbone. Such as auto generating accessor metho
 
 ## Usage
 
-Accessor methods for model attributes following the traditional java pattern. Create getAttributeName(), setAttributeName( newValue), and will change the boolean getter to an isAttributeName().
+Accessor methods for model attributes following the traditional java pattern. Create getAttributeName() and setAttributeName( newValue ) for any attribute type. For boolean values it will also create isAttributeName(), hasAttributeName(), canAttributeName(), and shouldAttributeName() accessors.
 
 Support attribute names in the following formats:
 
@@ -40,5 +40,5 @@ Getter .isClipEmpty();
 Setter .setClipEmpty( param );
 
 
-Support for alternate boolean prefixes such as hasLicense(), canEvaluate(), and shouldHalt()
+
 Subcollections
