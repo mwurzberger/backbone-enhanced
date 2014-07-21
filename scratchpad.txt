@@ -58,6 +58,16 @@ LoDash
 
 
 
+I created backbone-deep-model for this - just extend Backbone.DeepModel instead of Backbone.Model and you can then use paths to get/set nested model attributes. It maintains change events too.
+https://github.com/powmedia/backbone-deep-model
+model.bind('change:user.name.first', function(){...});
+model.set({'user.name.first': 'Eric'});
+model.get('user.name.first'); //Eric
+
+Have it autogenerate thos bindings?
+
+
+
 
 
 Break Apart Your Backbone.js Render Methods

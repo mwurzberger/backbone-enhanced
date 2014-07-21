@@ -73,9 +73,34 @@ describe('backbone_enhanced', function(){
 		});
 	});
 
-	describe('allows virtual models that', function(){
-		it('should pass set attributes to the ', function(){
+	describe('allows proxy models that', function(){
+		var TestModel = Backbone.Model.extend({
+			defaults: {
+				"test-attribute": "String Here"
+			}
+		});
 
+		var TargetModel = new TestModel({
+			"test-attribute": "Target Model Value"
+		});
+
+		var ProxyModel = new TestModel({}, {
+			"proxy_target": TargetModel
+		});
+
+		it('should pass get calls to the proxy target', function(){
+			var targetAttr = TargetModel.get("test-attribute");
+			var proxyAttr = ProxyModel.get("test-attribute");
+			targetAttr.should.equal( proxyAttr );
+		});
+
+		it('should pass set calls to the proxy target', function(){
+			var newValue = "Set Via Proxy";
+			ProxyModel.set("test-attribute", newValue);
+
+			var targetAttr = TargetModel.get("test-attribute");
+			var proxyAttr = ProxyModel.get("test-attribute");
+			targetAttr.should.equal( proxyAttr );
 		});
 	});
 });

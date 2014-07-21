@@ -12,7 +12,21 @@
 		<h1>Backbone Enhanced Sandbox</h1>
 		
 		<div id="debugDiv"></div>
-
+		<script type="text/javascript">
+			if (typeof console  != "undefined") {
+				if (typeof console.log != 'undefined') {
+					console.olog = console.log;	
+				} else {
+					console.olog = function() {};			
+				}
+			} 
+				 
+			console.log = function(message) {
+			  console.olog(message);
+			  $('#debugDiv').append('<p>' + message + '</p>');
+			};
+			console.error = console.debug = console.info =  console.log
+		</script>
 		<!-- <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.underscore.js"></script> -->		
 		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.underscore.js"></script>
 		<!-- <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore.js"></script> -->		
