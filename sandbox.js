@@ -92,10 +92,10 @@ $(document).ready(function(){
 	// MyGuns.toString();
 	// Pistols.toString();	
 
-
+/*
 	var TestModel = Backbone.Model.extend({
 		defaults: {
-			"test-attribute": "String Here"
+			"test-attribute": "Test Attribute String"
 		}
 	});
 
@@ -107,34 +107,69 @@ $(document).ready(function(){
 		"proxy_target": TargetModel
 	});
 
-	ProxyModel.set("test-attribute", "set via proxy");
+	ProxyModel.set("test-attribute", "Proxy Model Value");
 
 	console.log("");
 	console.log("Print Attributes");
 	console.log(TargetModel.get("test-attribute"));
 	console.log(ProxyModel.get("test-attribute"));	
+*/
 
 
+	// Define a model
+	var Program = Backbone.Model.extend({
+		defaults: {
+			"name": "Program Name",
+			"installed": false,
+			"type": "Game|Office|Web|Media|Utility"
+		},
+		toString: function() {
+			return "The " + this.getType() + " " + this.getName() + " is " + (this.isInstalled() ? "installed." : "not installed.");
+		}
+	});
 
-	// var TestModel = Backbone.Model.extend({
-	// 	defaults: {
-	// 		"test-attribute": "Test Attribute Default"
-	// 	},
-	// 	initialize: function(){
-	// 		console.log("Created new TestModel with test-attribute of " + this.get("test-attribute"));
-	// 	}
-	// });
+	// Define a collection
+	var ProgramCollection = Backbone.Collection.extend({
+		model: Program,
+		prettyPrint: function( msg ){
+			console.log( msg );
+			_.each( this.models, function( model ){
+				console.log( model.toString() );
+			});
+		}
+	});
 
-	// var PrimaryModel = new TestModel({
-	// 	"test-attribute": "Primary Model Value"
-	// });
-	
-	// var VirtualModel = new TestModel({}, {
-	// 	"virtual_proxy": PrimaryModel
-	// });
+	// Instances of the model
+	var wow = new Program({
+		"name": "World of Warcraft", 
+		"installed": false, 
+		"type":"Game"
+	});
 
-	// console.log("");
-	// console.log("Print Attributes");
-	// console.log(PrimaryModel.get("test-attribute"));
-	// console.log(VirtualModel.get("test-attribute"));	
+	var jvm = new Program({
+		"name": "Java Virtual Machine", 
+		"installed": true, 
+		"type":"Utility"
+	});
+
+	// Instances of the collection
+	var MyPrograms = new ProgramCollection([],{
+		"name_string": "MyPrograms"
+	});
+	var MyGames = new ProgramCollection([],{
+		"proxy_target": MyPrograms,
+		"name_string": "MyGames"
+	});
+
+	MyPrograms.add( wow );
+	MyPrograms.add( jvm );
+	MyPrograms.prettyPrint("MyPrograms");
+
+	MyGames.add({
+		"name": "Starcraft", 
+		"installed": true, 
+		"type":"Game"
+	});
+	MyPrograms.prettyPrint("MyPrograms");
+	MyGames.prettyPrint("MyGames");
 });

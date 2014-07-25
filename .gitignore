@@ -6,3 +6,5 @@
 # Node Extras #
 ###############
 node_modules/
+
+*scratchpad.txt

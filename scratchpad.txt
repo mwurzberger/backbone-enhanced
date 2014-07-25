@@ -22,6 +22,12 @@ Internally rename the old add method to addViaProxy and have it bind to parent a
 
 
 
+- Mutators = fullname is firstName + lastName
+- Can set both with one set() call
+- Make sure that the mustators are combined to make the same kind of call as a regular set, that way you only have one change call for the entire set instead of one per subset
+
+
+
 https://github.com/numbers1311407/backbone-getset/blob/master/lib/backbone-getset.js
 
 Annotated Source at http://backbonejs.org/docs/backbone.html
@@ -102,3 +108,68 @@ http://wiki.github.com/bmatzelle/gow/
 https://github.com/bmatzelle/gow
 
 http://www.hanselman.com/blog/MakingABetterSomewhatPrettierButDefinitelyMoreFunctionalWindowsCommandLine.aspx
+
+
+
+
+Backbone.Collection = ( function( Collection ) {        
+
+        // Define the new constructor
+        Backbone.Collection = function( models, options ) {
+            var hasProxyTarget = false;
+            var shouldAcceptAddEvents = false;
+
+            // Handling Virtual Proxy Models
+            options || (options = {});
+            if (options.proxy_target !== undefined){
+                hasProxyTarget = true;
+                this.proxy_target = options.proxy_target;
+
+                // Define replacement methods
+                this._addProxyModel = function( model, collection, options ){
+                    console.log("Triggered Add Event from Master");
+                    if( this.shouldAcceptAddEvents ){
+                        console.log("I should also accept this add event");
+                        var proxy_model = new model.constructor( model.toJSON(), {"proxy_target": model});
+                        this.old_set( proxy_model, options );
+                    }
+                }
+
+                // Propogate Upwards
+                // Add
+                this.old_set = this.set;
+                this.set = function( models, options ){
+                    this.shouldAcceptAddEvents = true;
+                    this.proxy_target.set( models, options );
+                    this.shouldAcceptAddEvents = false;
+                }
+                // Reset
+                // Fetch (does it add and set?)
+                // Create
+
+
+                // Propogate Down
+                // Remove
+                // Reset?
+
+                // Add all the callbacks
+                this.proxy_target.on( "add", _.bind( this._addProxyModel, this ) );
+            }
+
+            // Call the default constructor
+            Collection.apply( this, arguments );    
+        };
+
+        // Clone static properties
+        _.extend( Backbone.Collection, Collection );
+
+        // Clone prototype
+        Backbone.Collection.prototype = ( function( Prototype ) {
+            Prototype.prototype = Collection.prototype;
+            return new Prototype;
+        } )( function() {} );
+
+        // Update constructor in prototype
+        Backbone.Collection.prototype.constructor = Backbone.Collection;
+        return Backbone.Collection;
+    } )( Backbone.Collection );

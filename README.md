@@ -26,6 +26,37 @@ Support attribute names in the following formats:
 > "attributeName"
 
 
+Virtual Models
+
+Any model can have a proxy_target passed in as an option. This will effectivly bind all of the virtual models methods to the target without creating a duplicate of the data. A get or set on either model will update both. This is of primary use when making collection subsets since the data should not be duplicated.
+
+var TestModel = Backbone.Model.extend({
+	defaults: {
+		"test-attribute": "Test Attribute String"
+	}
+});
+
+var TargetModel = new TestModel({
+	"test-attribute": "Target Model Value"
+});
+
+var ProxyModel = new TestModel({}, {
+	"proxy_target": TargetModel
+});
+
+// This should print "Test Attribute String"
+console.log(TargetModel.get("test-attribute"));
+
+ProxyModel.set("test-attribute", "Proxy Model Value");
+
+// This should now print "Proxy Model Value"
+console.log(TargetModel.get("test-attribute"));
+
+
+
+Collection Subset
+
+
 ## Todo
 
 

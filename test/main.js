@@ -73,6 +73,7 @@ describe('backbone_enhanced', function(){
 		});
 	});
 
+	//TODO should there be a test for every method used by a collection
 	describe('allows proxy models that', function(){
 		var TestModel = Backbone.Model.extend({
 			defaults: {
@@ -88,12 +89,14 @@ describe('backbone_enhanced', function(){
 			"proxy_target": TargetModel
 		});
 
+		// get
 		it('should pass get calls to the proxy target', function(){
 			var targetAttr = TargetModel.get("test-attribute");
 			var proxyAttr = ProxyModel.get("test-attribute");
 			targetAttr.should.equal( proxyAttr );
 		});
 
+		// set
 		it('should pass set calls to the proxy target', function(){
 			var newValue = "Set Via Proxy";
 			ProxyModel.set("test-attribute", newValue);
@@ -102,5 +105,64 @@ describe('backbone_enhanced', function(){
 			var proxyAttr = ProxyModel.get("test-attribute");
 			targetAttr.should.equal( proxyAttr );
 		});
+
+		// escape
+		// has
+		// unset
+		// clear
+		// id
+		// idAttribute
+		// cid
+		// attributes
+		// changed
+		// defaults
+		// toJSON
+		// sync
+		// fetch
+		// save
+		// destroys
+		// Underscore Methods (keys, values, pairs, invert, pick, omit)
+		// validate
+		// validationError
+		// isValid
+		// url
+		// urlRoot
+		// parse
+		// clone
+		// isNew
+		// hasChanged
+		// changedAttributes
+		// previous
+		// previousAttributes
+
+
+	});
+
+	describe('allows subset collections that', function(){
+		it('should contain only models in the parent collection', function(){
+
+		});
+		// toJSON
+		// sync
+		// add
+		// remove
+		// set
+		// reset
+		// push
+		// pop
+		// unshift
+		// shift
+		// slice
+		// get
+		// at
+		// where
+		// findWhere
+		// sort
+		// sortedIndex
+		// pluck
+		// create
+		// parse
+		// clone
+		// 
 	});
 });
