@@ -32,7 +32,38 @@
 		<!-- <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore.js"></script> -->		
 		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone.js"></script>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.js"></script>
-		<script type="text/javascript" src="lib/main.js"></script>
-		<script type="text/javascript" src="sandbox.js"></script>
+		<script type="text/javascript" src="backbone-enhanced.js"></script>
+		<!--<script type="text/javascript" src="sandbox.js"></script>-->
+
+		<script type="text/javascript">
+		var Defaulted = Backbone.Model.extend({
+	      defaults: {one: 1},
+	      initialize : function(attrs, opts) {
+	        
+	      }
+	    });
+	    var providedattrs = new Defaulted({0:false});
+	    var emptyattrs = new Defaulted();
+
+
+
+		// var Program = Backbone.Model.extend({
+		// 	defaults: {
+		// 		"name": "Program Name",
+		// 		"installed": false,
+		// 		"type": "Game|Office|Web|Media|Utility"
+		// 	},
+		// 	toString: function() {
+		// 		return "";
+		// 		return "The " + this.getType() + " " + this.getName() + " is " + (this.isInstalled() ? "installed." : "not installed.");
+		// 	}
+		// });
+
+		// var wow = new Program({
+		// 	"name": "World of Warcraft", 
+		// 	"installed": false, 
+		// 	"type":"Game"
+		// });
+		</script>		
 	</body>
 </html>

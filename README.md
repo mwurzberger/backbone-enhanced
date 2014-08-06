@@ -8,6 +8,8 @@ Adding additional properties to backbone. Such as auto generating accessor metho
 
 
 ## Installation
+npm install -g venus
+
 
 ## Usage
 

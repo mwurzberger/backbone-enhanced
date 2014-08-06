@@ -124,6 +124,7 @@ $(document).ready(function(){
 			"type": "Game|Office|Web|Media|Utility"
 		},
 		toString: function() {
+			return "";
 			return "The " + this.getType() + " " + this.getName() + " is " + (this.isInstalled() ? "installed." : "not installed.");
 		}
 	});
@@ -146,11 +147,17 @@ $(document).ready(function(){
 		"type":"Game"
 	});
 
+	console.log("Test Get: " + ( wow.get("test") || wow.get("test2") || "Default" ) );
+	console.log("Test Set: " + wow.set("test", "meh"));
+	console.log("Real Set: " + wow.has("type2"));
+
 	var jvm = new Program({
 		"name": "Java Virtual Machine", 
 		"installed": true, 
 		"type":"Utility"
 	});
+
+	debugger;
 
 	// Instances of the collection
 	var MyPrograms = new ProgramCollection([],{

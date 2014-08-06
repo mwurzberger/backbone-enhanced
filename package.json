@@ -1,30 +1,35 @@
 {
-  "name": "backbone-enhanced",
-  "version": "0.0.1",
-  "description": "Collection of enhancements to default backbone. Auto-generate accessor methods for model attributes.",
-  "main": "lib/main.js",
-  "scripts": {
-    "test": "mocha test/*.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mwurzberger/backbone-enhanced.git"
-  },
+  "name"          : "backbone-enhanced",
+  "description"   : "Collection of enhancements to default Backbone Models and Collections.",
+  "homepage"      : "https://github.com/mwurzberger/backbone-enhanced",
+  "url"           : "https://github.com/mwurzberger/backbone-enhanced",
+  "keywords"      : ["backbone", "mutator", "accessor", "subcollection", "virtual", "nested", "deep", "collection", "model", "client", "browser"],
+  "author": "Matthew Wurzberger <matthew.wurzberger@gmail.com>",  
   "dependencies": {
     "lodash": "2.4.1",
     "backbone": "1.1.2"
   },
   "devDependencies": {
     "mocha": "",
-    "should": ""
+    "should": "",
+    "phantomjs": "1.9.7-8",
+    "docco": "0.6.3"
   },
-  "keywords": [
-    "backbone"
-  ],
-  "author": "Matthew Wurzberger",
-  "license": "MIT",
+  "scripts": {
+    "test": "npm run test-backbone-core && npm run test-backbone-enhanced",
+    "test-backbone-core": "phantomjs test/backbone-core/vendor/runner.js test/backbone-core/index.html?noglobals=true",
+    "test-backbone-enhanced": "mocha test/backbone-enhanced-test.js",
+    "build": "uglifyjs backbone-enhanced.js --mangle --source-map backbone-enhanced-min.map -o backbone-enhanced-min.js",
+    "doc": "docco backbone-enhanced.js"
+  },
+  "main"          : "backbone-enhanced.js",
+  "version"       : "0.0.2",
+  "license"       : "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mwurzberger/backbone-enhanced.git"
+  }, 
   "bugs": {
     "url": "https://github.com/mwurzberger/backbone-enhanced/issues"
-  },
-  "homepage": "https://github.com/mwurzberger/backbone-enhanced"
+  }
 }
